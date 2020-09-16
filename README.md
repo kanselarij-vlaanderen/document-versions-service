@@ -1,4 +1,4 @@
-# document-version-service
+# document-versions-service
 
 Microservice providing custom actions on document versions and related entities.
 
