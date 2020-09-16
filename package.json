@@ -1,0 +1,16 @@
+{
+  "name": "document-versions-service",
+  "version": "0.0.0",
+  "description": "Microservice providing custom actions on document versions and related entities",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanselarij-vlaanderen/documents-version-service.git"
+  },
+  "author": "redpencil.io",
+  "license": "MIT"
+}
