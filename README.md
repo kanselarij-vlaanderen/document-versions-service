@@ -26,3 +26,6 @@ Example request body
   }
 }
 ```
+
+#### PUT /agendaitems/:id/pieces/restore
+Add a document to the collection of documents of an agendaitem. If the agendaitem already contained a new version of the document added the agendaitem after agenda approval- the previous version(s) gets restored when deleting the new version. Only if the deletion would mean that the last piece linking a document-container and an agendaitem is being deleted.
