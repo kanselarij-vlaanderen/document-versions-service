@@ -109,7 +109,10 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
     const parsedResults = util.parseSparqlResults(resultCurrent);
     console.log(parsedResults);
 
-    // only if 0 results are 
+    // If previous query yields no results, try updating the current agendaitem with pieces from the previous version of agendaitem
+    // Will not insert anything if:
+    // There is no previous agendaitem
+    // There are no pieces in the container
     if (parsedResults && parsedResults.length === 0 ) {
       await update(`
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
