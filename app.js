@@ -107,7 +107,6 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
     );
 
     const parsedResults = util.parseSparqlResults(resultCurrent);
-    console.log(parsedResults);
 
     // If previous query yields no results, try updating the current agendaitem with pieces from the previous version of agendaitem
     // Will not insert anything if:
