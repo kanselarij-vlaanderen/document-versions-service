@@ -24,13 +24,13 @@ app.put('/agendaitems/:id/documents', async function( req, res, next ) {
       WHERE {
          GRAPH <${KANSELARIJ_GRAPH}> {
             ?newDocument mu:uuid ${sparqlEscapeString(documentId)} .
-            ?documentContainer dossier:collectie.bestaatUit ?newDocument .
+            ?documentContainer dossier:Collectie.bestaatUit ?newDocument .
 
             ?agendaitem mu:uuid ${sparqlEscapeString(agendaitemId)} ;
                         prov:wasRevisionOf ?previousAgendaitem .
             ?agendaitem besluitvorming:geagendeerdStuk ?previousDocument .
             ?previousAgendaitem besluitvorming:geagendeerdStuk ?previousDocument .
-            ?documentContainer dossier:collectie.bestaatUit ?previousDocument .
+            ?documentContainer dossier:Collectie.bestaatUit ?previousDocument .
          }
       }
     `);
@@ -100,7 +100,7 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
       PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
       SELECT * WHERE {
         ?documentContainer mu:uuid ${sparqlEscapeString(containerId)} ;
-                           dossier:collectie.bestaatUit ?pieces .
+                           dossier:Collectie.bestaatUit ?pieces .
         ?currentAgendaitem mu:uuid ${sparqlEscapeString(agendaitemId)} .
         ?currentAgendaitem besluitvorming:geagendeerdStuk ?pieces .
       }`
@@ -123,7 +123,7 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
         }
         WHERE {
           ?documentContainer mu:uuid ${sparqlEscapeString(containerId)} ;
-                             dossier:collectie.bestaatUit ?pieces .
+                             dossier:Collectie.bestaatUit ?pieces .
           ?currentAgendaitem mu:uuid ${sparqlEscapeString(agendaitemId)} ;
                              prov:wasRevisionOf ?previousAgendaitem .
           ?previousAgendaitem besluitvorming:geagendeerdStuk ?pieces .
