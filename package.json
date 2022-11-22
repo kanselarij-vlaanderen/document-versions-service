@@ -1,6 +1,6 @@
 {
   "name": "document-versions-service",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Microservice providing custom actions on document versions and related entities",
   "dependencies": {},
   "devDependencies": {},
