@@ -16,7 +16,7 @@ app.put('/agendaitems/:id/documents', async function( req, res, next ) {
     let result = await query(`
       PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
       PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
-      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
       PREFIX dct: <http://purl.org/dc/terms/>
       PREFIX prov: <http://www.w3.org/ns/prov#>
       PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -41,7 +41,7 @@ app.put('/agendaitems/:id/documents', async function( req, res, next ) {
       const previousDocument = binding['previousDocument'].value;
       console.log(`Remove previous document <${previousDocument}> from agendaitem <${agendaitem}>. It will be replaced with a new version.`);
       await update(`
-      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
       DELETE DATA {
          GRAPH <${KANSELARIJ_GRAPH}> {
            ${sparqlEscapeUri(agendaitem)} besluitvorming:geagendeerdStuk ${sparqlEscapeUri(previousDocument)} .
@@ -54,7 +54,7 @@ app.put('/agendaitems/:id/documents', async function( req, res, next ) {
     console.log(`Add new document ${documentId} to agendaitem ${agendaitemId}.`);
     await update(`
       PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
       INSERT {
           GRAPH <${KANSELARIJ_GRAPH}> {
             ?agendaitem besluitvorming:geagendeerdStuk ?newDocument .
@@ -97,7 +97,7 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
     let resultCurrent = await query(`
       PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
       PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
-      PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+      PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
       SELECT * WHERE {
         ?documentContainer mu:uuid ${sparqlEscapeString(containerId)} ;
                            dossier:Collectie.bestaatUit ?pieces .
@@ -116,7 +116,7 @@ app.put('/agendaitems/:id/pieces/restore', async function( req, res, next ) {
       await update(`
         PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
         PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
-        PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+        PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
         PREFIX prov: <http://www.w3.org/ns/prov#>
         INSERT {
           ?currentAgendaitem besluitvorming:geagendeerdStuk ?pieces .
